@@ -3,6 +3,8 @@ warn("PR is classed as Work in Progress") if github.pr_title.include? "[WIP]"
 
 message "Thanks @#{github.pr_author} 👍👍"
 
+warn("You should provide a summary in the Pull Request description so that the reviewer has more context on this Pull Request 🤔") if github.pr_body.length < 5
+
 #
 # Notify of the release APK size.
 #
