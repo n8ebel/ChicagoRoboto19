@@ -22,6 +22,20 @@ plugins {
 }
 
 allprojects {
+    apply plugin: "org.jlleitschuh.gradle.ktlint" // Version should be inherited from parent
+
+    ktlint {
+        version = "0.30.0"
+        android = true
+        ignoreFailures = true
+        reporters = [ReporterType.PLAIN, ReporterType.CHECKSTYLE]
+
+        filter {
+            exclude("**/generated/**")
+            include("**/kotlin/**")
+        }
+    }
+
     repositories {
         google()
         jcenter()
@@ -29,21 +43,9 @@ allprojects {
     }
 }
 
-subprojects {
-    apply plugin: "org.jlleitschuh.gradle.ktlint" // Version should be inherited from parent
-}
-
-ktlint {
-    version = "0.30.0"
-    android = true
-    ignoreFailures = true
-    reporters = [ReporterType.PLAIN, ReporterType.CHECKSTYLE]
-
-    filter {
-        exclude("**/generated/**")
-        include("**/kotlin/**")
-    }
-}
+//subprojects {
+//    apply plugin: "org.jlleitschuh.gradle.ktlint" // Version should be inherited from parent
+//}
 
 task clean(type: Delete) {
     delete rootProject.buildDir

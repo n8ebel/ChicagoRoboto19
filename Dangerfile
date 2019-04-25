@@ -3,7 +3,7 @@ warn("PR is classed as Work in Progress") if github.pr_title.include? "[WIP]"
 
 message "Thanks @#{github.pr_author} 👍👍"
 
-warn("You should provide ...") if github.pr_body.length < 5
+warn("You should provide a summary in the Pull Request description so that the reviewer has more context on this Pull Request 🤔") if github.pr_body.length < 5
 
 #
 # Notify of the release APK size.
@@ -23,3 +23,9 @@ elsif update_count > 0
   heading = "The following dependencies have later milestone versions:"
   warn file.slice(file.index(heading)..-1)
 end
+
+
+#
+# Report inline ktlint issues
+#
+checkstyle_format.report 'app/build/reports/ktlint/ktlintMainSourceSetCheck.xml'
