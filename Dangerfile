@@ -28,4 +28,4 @@ end
 #
 # Report inline ktlint issues
 #
-checkstyle_format.report 'app/build/reports/ktlint/ktlintMainSourceSetCheck.xml'
+#checkstyle_format.report 'app/build/reports/ktlint/ktlintMainSourceSetCheck.xml'
